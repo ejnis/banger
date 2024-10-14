@@ -49,7 +49,7 @@ export default class selection extends Phaser.Scene {
         this.load.image("bullet", "src/assets/balle.png");
 
         this.load.audio('coupDeFeu', 'src/assets/sound/pew.mp3');
-        this.load.audio('background', 'src/assets/sound/guile.mp3'); 
+        this.load.audio('background', 'src/assets/sound/guile.mp3');
     }
 
     create() {
@@ -71,21 +71,21 @@ export default class selection extends Phaser.Scene {
         player.body.onWorldBounds = true;
         this.physics.add.collider(player, groupe_plateformes);
 
-            //pour qu'il meure 
+        //pour qu'il meure 
 
         player.body.world.on(
             "worldbounds", // evenement surveillé
             function (body, up, down, left, right) {
-                  // on verifie si la hitbox qui est rentrée en collision est celle du player,
-                  // et si la collision a eu lieu sur le bord inférieur du player
+                // on verifie si la hitbox qui est rentrée en collision est celle du player,
+                // et si la collision a eu lieu sur le bord inférieur du player
                 if (body.gameObject === player && down == true) {
                     // si oui : GAME OVER on arrete la physique et on colorie le personnage en rouge
-                gameOver = true;
-                player.setTint(0xff0000);
+                    gameOver = true;
+                    player.setTint(0xff0000);
                 }
             },
             this
-            ); 
+        );
 
         //bind
         clavier = this.input.keyboard.createCursorKeys('');
@@ -218,14 +218,14 @@ export default class selection extends Phaser.Scene {
             loop: true,
             volume: 0.5
         });
-    
+
         musique_de_fond.play();
-        
+
     }
 
     update() {
 
-       
+
 
 
         if (clavier.right.isDown) {
@@ -273,13 +273,13 @@ export default class selection extends Phaser.Scene {
 
         this.physics.add.overlap(player, groupe_etoiles, ramasserEtoile, null, this);
 
-        
-        
-        
+
+
+
         if (gameOver) {
             this.scene.start("mort");
             this.scene.stop("selection");
-            
+
         }
 
 
@@ -296,11 +296,11 @@ export default class selection extends Phaser.Scene {
             if (this.physics.overlap(player, this.porte3)) this.scene.start("selection");
         }
 
-        
+
 
     }
 
-    
+
 
 
 
@@ -357,7 +357,7 @@ function chocAvecBombe(un_player, une_bombe) {
 
 function tirer(player) {
 
-son_feu.play();
+    son_feu.play();
 
     // mesasge d'alerte affichant les attributs de player
     console.log("joueur en position" + player.x + "," + player.y + ", direction du tir: "

@@ -32,7 +32,7 @@ export default class mort extends Phaser.Scene {
         //Cas ou la souris ne passe plus sur le bouton play
         bouton_play.on("pointerout", () => {
 
-        });
+        }); 
 
 
         //Cas ou la sourris clique sur le bouton play :
